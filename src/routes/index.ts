@@ -10,7 +10,7 @@ router.post('/user',loginMiddleware,authenticateToken, userController.getAllUser
 
 router.post('/user/:id', loginMiddleware, authenticateToken ,userController.getUserById);
 
-router.post('/user', loginMiddleware ,authenticateToken, userController.createUser);
+router.post('/createuser', loginMiddleware ,authenticateToken, userController.createUser);
 
 router.put('/user/:id', loginMiddleware,authenticateToken, userController.updateUserById);
 
