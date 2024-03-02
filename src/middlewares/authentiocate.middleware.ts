@@ -58,14 +58,13 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
     }
 
     const token = parts[1];
-    
+    console.log('check token:' + token);
     try {
         // const decoded = jwt.verify(token, 'secret_key');
         if(token == 'secret_key'){
             next();
         }
-        res.sendStatus(403);
-        
+      
     } catch (error) {
         console.log(error);
         res.sendStatus(403);
