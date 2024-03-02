@@ -32,7 +32,7 @@ export async function loginMiddleware(req: Request, res: Response, next: NextFun
             return;
         }
 
-         const token = jwt.sign({ userId: user.id }, 'your_secret_key', { expiresIn: "1h" });
+         const token = jwt.sign({ userId: user.id }, 'secret_key', { expiresIn: "1h" });
 
          (req as any).token = token;
 
@@ -60,11 +60,11 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
     const token = parts[1];
     
     try {
-        // const decoded = jwt.verify(token, 'your_secret_key');
-        if(token == 'your_secret_key'){
+        // const decoded = jwt.verify(token, 'secret_key');
+        if(token == 'secret_key'){
             next();
         }
-    
+        res.sendStatus(403);
         
     } catch (error) {
         console.log(error);
